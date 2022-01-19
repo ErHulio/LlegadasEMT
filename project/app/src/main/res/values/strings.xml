@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">LlegadasEMT</string>
+    <string name="Hometoolbar_title">Home</string>
+    <string name="Arrivalstoolbar_title">Arrivals</string>
+    <string name="search_description">search_button</string>
+    <string name="search_stop">Search bus stop</string>
+    <string name="search_close">Close search</string>
+    <string name="search_hint">Type your stop number</string>
+    <string name="search_incorrect">Please, fill the search box properly</string>
+    <string name="arrivals_text">Arrival times retrieved successfully</string>
 </resources>
