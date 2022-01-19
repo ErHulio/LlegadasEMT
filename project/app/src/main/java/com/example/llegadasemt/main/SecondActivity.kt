@@ -1,7 +1,7 @@
 package com.example.llegadasemt.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.llegadasemt.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
@@ -11,6 +11,8 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.secondToolbar)
     }
 
     override fun onBackPressed() {
