@@ -8,9 +8,9 @@
         <item name="android:theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
-        <item name="title">Home</item>
+        <item name="title">@string/Hometoolbar_title</item>
     </style>
-    <style name="SecondToolbarTheme">
+    <style name="ArrivalsToolbarTheme">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:background">?attr/colorPrimary</item>
@@ -18,7 +18,7 @@
         <item name="android:theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
-        <item name="title">Second</item>
+        <item name="title">@string/Arrivalstoolbar_title</item>
         <item name="navigationIcon">?attr/homeAsUpIndicator</item>
     </style>
     <style name="ShapeFloatingButton">

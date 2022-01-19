@@ -12,30 +12,24 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.llegadasemt.databinding.ActivityMainBinding
-import com.example.llegadasemt.network.DataResponse
-import com.example.llegadasemt.network.getRequest
-import kotlinx.coroutines.launch
+import com.example.llegadasemt.R
+import com.example.llegadasemt.databinding.ActivityHomeBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class HomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.homeToolbar)
 
-        val intent = Intent(this, SecondActivity::class.java)
+        val intent = Intent(this, ArrivalsActivity::class.java)
 
         var icon: Drawable = binding.floatingSearch.icon
 
-        binding.button.setOnClickListener {
+        /*binding.button.setOnClickListener {
             Toast.makeText(this, "El botón funciona correctamente", Toast.LENGTH_SHORT).show()
             binding.textView.text = "Second text"
             var aux = MyView().getData("hello", binding.textView2)
@@ -45,30 +39,35 @@ class MainActivity : AppCompatActivity() {
         binding.button2.setOnClickListener {
             startActivity(intent)
             this.overridePendingTransition(0,0)
-        }
+        }*/
 
         binding.floatingSearch.setOnClickListener {
             if(binding.inputBoxBackground.visibility == View.VISIBLE) {
                 fadeOut(binding.inputBoxBackground)
                 binding.floatingSearch.icon = icon
-                binding.floatingSearch.text = "Search bus stop"
+                binding.floatingSearch.text = getString(R.string.search_stop)
             }
             else{
                 fadeIn(binding.inputBoxBackground)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     binding.floatingSearch.icon = resources.getDrawable(android.R.drawable.ic_menu_close_clear_cancel,null)
                 }
-                binding.floatingSearch.text = "Close search"
+                binding.floatingSearch.text = getString(R.string.search_close)
             }
         }
 
         binding.inputBox.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(txview: TextView?, actionId: Int, event: KeyEvent?): Boolean {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    intent.putExtra("stop", binding.inputBox.text)
-                    startActivity(intent)
-                    this@MainActivity.overridePendingTransition(0,0)
-                    return true;
+                    if (binding.inputBox.text.toString() == "") {
+                        Toast.makeText(this@HomeActivity, getString(R.string.search_incorrect), Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        intent.putExtra("stop", binding.inputBox.text.toString())
+                        startActivity(intent)
+                        this@HomeActivity.overridePendingTransition(0,0)
+                        return true;
+                    }
                 }
                 return false;
             }
@@ -108,7 +107,7 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class MyView: ViewModel() {
+/*class MyView: ViewModel() {
     private val _result = MutableLiveData<DataResponse>()
     private val result: LiveData<DataResponse> = _result
     fun getData(path: String, view: TextView): DataResponse? {
@@ -124,4 +123,4 @@ class MyView: ViewModel() {
         }
         return result.value
     }
-}
+}*/

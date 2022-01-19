@@ -5,16 +5,16 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.SecondActivity">
+        tools:context=".main.ArrivalsActivity">
 
     <androidx.appcompat.widget.Toolbar
-            android:id="@+id/second_toolbar"
-            style="@style/SecondToolbarTheme" />
+            android:id="@+id/arrivals_toolbar"
+            style="@style/ArrivalsToolbarTheme" tools:ignore="MissingConstraints"/>
     <TextView
-            android:text="TextView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView3"
+            android:layout_height="wrap_content" android:id="@+id/textViewArrivals"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="361dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="176dp" android:textColor="@color/black"/>
+            android:padding="50dp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+    />
 </androidx.constraintlayout.widget.ConstraintLayout>
