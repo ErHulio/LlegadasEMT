@@ -7,11 +7,14 @@
         android:layout_height="match_parent"
         tools:context=".main.SecondActivity">
 
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/second_toolbar"
+            style="@style/SecondToolbarTheme" />
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView3"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="361dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="176dp"/>
+            android:layout_marginStart="176dp" android:textColor="@color/black"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
