@@ -6,13 +6,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19010416666666666" />
+        <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19010416666666666" />
+        <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/drawable/ic_round_360_24.xml" value="0.19010416666666666" />
+        <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/drawable/text_bg_rounded.xml" value="0.19010416666666666" />
         <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/layout-v21/activity_main.xml" value="0.17395833333333333" />
-        <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/layout/activity_arrivals.xml" value="0.17395833333333333" />
+        <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/layout/activity_arrivals.xml" value="0.33" />
         <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/layout/activity_second.xml" value="0.17395833333333333" />
+        <entry key="..\:/TuxToy/TuxToyCosilias/Programacion/Kotlin/Android/LlegadasEMT/project/app/src/main/res/layout/bus_arrival.xml" value="0.33" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="jbr-11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="jbr-11" project-jdk-type="JavaSDK" />
 </project>

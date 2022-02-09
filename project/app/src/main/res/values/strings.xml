@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LlegadasEMT</string>
     <string name="Hometoolbar_title">Home</string>
-    <string name="Arrivalstoolbar_title">Arrivals</string>
+    <string name="Arrivalstoolbar_title">Arrivals - Stop</string>
     <string name="search_description">search_button</string>
     <string name="search_stop">Search bus stop</string>
     <string name="search_close">Close search</string>

@@ -29,18 +29,6 @@ class HomeActivity : AppCompatActivity() {
 
         var icon: Drawable = binding.floatingSearch.icon
 
-        /*binding.button.setOnClickListener {
-            Toast.makeText(this, "El botón funciona correctamente", Toast.LENGTH_SHORT).show()
-            binding.textView.text = "Second text"
-            var aux = MyView().getData("hello", binding.textView2)
-            binding.textView2.text = aux?.text
-        }
-
-        binding.button2.setOnClickListener {
-            startActivity(intent)
-            this.overridePendingTransition(0,0)
-        }*/
-
         binding.floatingSearch.setOnClickListener {
             if(binding.inputBoxBackground.visibility == View.VISIBLE) {
                 fadeOut(binding.inputBoxBackground)
@@ -106,21 +94,3 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 }
-
-/*class MyView: ViewModel() {
-    private val _result = MutableLiveData<DataResponse>()
-    private val result: LiveData<DataResponse> = _result
-    fun getData(path: String, view: TextView): DataResponse? {
-        viewModelScope.launch {
-            try {
-                _result.value = getRequest().getPath(path)
-                println(result.value?.text)
-                view.text = result.value?.text
-            }
-            catch (e: Exception) {
-                println(e.message)
-            }
-        }
-        return result.value
-    }
-}*/
