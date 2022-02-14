@@ -14,9 +14,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.llegadasemt.R
 import com.example.llegadasemt.databinding.ActivityHomeBinding
+import com.example.llegadasemt.network.RequestView
+import com.example.llegadasemt.network.Token
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var requests: RequestView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,10 @@ class HomeActivity : AppCompatActivity() {
         val intent = Intent(this, ArrivalsActivity::class.java)
 
         var icon: Drawable = binding.floatingSearch.icon
+
+        requests = RequestView()
+        val tokenWrapper = Token()
+        requests.login(tokenWrapper)
 
         binding.floatingSearch.setOnClickListener {
             if(binding.inputBoxBackground.visibility == View.VISIBLE) {
@@ -52,6 +59,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                     else{
                         intent.putExtra("stop", binding.inputBox.text.toString())
+                        intent.putExtra("token", tokenWrapper.token)
                         startActivity(intent)
                         this@HomeActivity.overridePendingTransition(0,0)
                         return true;
@@ -88,8 +96,11 @@ class HomeActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (binding.inputBoxBackground.visibility == View.VISIBLE) {
             fadeOut(binding.inputBoxBackground)
+            binding.floatingSearch.icon = resources.getDrawable(android.R.drawable.ic_search_category_default,null)
+            binding.floatingSearch.text = getString(R.string.search_stop)
         }
         else {
+            requests.logout()
             super.onBackPressed()
         }
     }
