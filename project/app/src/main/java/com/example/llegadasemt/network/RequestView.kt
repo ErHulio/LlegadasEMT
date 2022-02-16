@@ -61,17 +61,17 @@ class RequestView: ViewModel {
                 var arrivals = ArrayList<MyArrival>()
                 var times = ArrayList<String>()
                 lateinit var destination: String
-                lateinit var lineNumb: String
+                var lineNumb: String = ""
                 for(line in resultArrivals.value!!.data.get(0).stopData.get(0).lines) {
                     for (arrival in resultArrivals.value!!.data.get(0).arrivals) {
                         if (line.label == arrival.line) {
                             lineNumb = arrival.line
-                            times.add((arrival.estimatedTime/60).toString() + " min")
+                            times.add(if(arrival.estimatedTime/60 < 60) (arrival.estimatedTime/60).toString() + " min" else "+1 h")
                             destination = arrival.destination
                         }
                     }
                     if (line.label == lineNumb) {
-                        arrivals.add(MyArrival(line.label, times[0], times[1], destination, "#" + line.background))
+                        arrivals.add(MyArrival(line.label, times[0], if(times.size == 2) times[1] else "-", destination, "#" + line.background))
                     }
                     times = ArrayList<String>()
                 }
