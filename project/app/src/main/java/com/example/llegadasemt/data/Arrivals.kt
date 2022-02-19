@@ -48,5 +48,6 @@ data class Line (
     @SerializedName("nameB") var endB: String,
     @SerializedName("metersFromHeader") var distance: Int,
     @SerializedName("to") var destination: String,
-    @SerializedName("color") var background: String
+    @SerializedName("color") var background: String,
+    @SerializedName("forecolor") var foreground: String
 )
