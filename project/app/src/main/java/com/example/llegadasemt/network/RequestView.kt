@@ -60,22 +60,25 @@ class RequestView: ViewModel {
                 _resultArrivals.value = getRequest().getArrivalTimes(accessToken, stop, ArriveBody("EN", "Y", "Y", "Y", ""))
                 var arrivals = ArrayList<MyArrival>()
                 var times = ArrayList<String>()
+                var timesInt = ArrayList<Int>()
                 lateinit var destination: String
                 var lineNumb: String = ""
                 for(line in resultArrivals.value!!.data.get(0).stopData.get(0).lines) {
                     for (arrival in resultArrivals.value!!.data.get(0).arrivals) {
                         if (line.label == arrival.line) {
                             lineNumb = arrival.line
+                            timesInt.add(arrival.estimatedTime)
                             times.add(if(arrival.estimatedTime/60 < 60) (arrival.estimatedTime/60).toString() + " min" else "+1 h")
                             destination = arrival.destination
                         }
                     }
                     if (line.label == lineNumb) {
-                        arrivals.add(MyArrival(line.label, times[0], if(times.size == 2) times[1] else "-", destination, "#" + line.background))
+                        arrivals.add(MyArrival(line.label, timesInt[0], times[0], if(times.size == 2) times[1] else "-", destination, "#" + line.background, if(line.foreground != null) "#" + line.foreground else "#FFFFFF"))
                     }
                     times = ArrayList<String>()
+                    timesInt = ArrayList<Int>()
                 }
-                adapter.arrivals = arrivals
+                adapter.arrivals = arrivals.sortedBy { it.timeInt }
                 emptyArrive.visibility = View.GONE
             }
             catch (e: Exception) {

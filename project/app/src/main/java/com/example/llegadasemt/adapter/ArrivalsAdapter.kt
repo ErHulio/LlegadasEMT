@@ -42,6 +42,7 @@ class ArrivalsAdapter: RecyclerView.Adapter<ArrivalsAdapter.ArrivalsViewHolder>(
             time.text = arrival.estimatedTime
             nextTime.text = arrival.nextEstimatedTime
             destination.text = arrival.destination
+            line.setTextColor(Color.parseColor(arrival.fgColor))
             drawable = drawable.mutate()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 drawable.setTint(Color.parseColor(arrival.bgColor))
