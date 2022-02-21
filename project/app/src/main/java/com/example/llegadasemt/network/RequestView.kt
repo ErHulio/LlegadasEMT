@@ -86,6 +86,10 @@ class RequestView: ViewModel {
                     if(arrivals.isEmpty()) {
                         binding.noArrivals.visibility = View.VISIBLE
                     }
+                    else {
+                        binding.arrivalsList.visibility = View.VISIBLE
+                        binding.floatingRefresh.visibility = View.VISIBLE
+                    }
                 }
                 catch (e: Exception) {
                     println(e.message)

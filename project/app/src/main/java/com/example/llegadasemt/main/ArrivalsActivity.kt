@@ -1,6 +1,7 @@
 package com.example.llegadasemt.main
 
 import android.os.Bundle
+import android.view.View
 import android.view.animation.Animation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ import com.example.llegadasemt.network.RequestView
 
 class ArrivalsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityArrivalsBinding
+    private lateinit var myAnimation: Animation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +30,19 @@ class ArrivalsActivity : AppCompatActivity() {
         val arrivalsAdapter: ArrivalsAdapter = ArrivalsAdapter()
         arrivalsList.adapter = arrivalsAdapter
         requests.getArrivals(stop, arrivalsAdapter, binding)
+
+        binding.floatingRefresh.setOnClickListener {
+            binding.floatingRefresh.visibility = View.GONE
+            binding.arrivalsList.visibility = View.INVISIBLE
+            binding.emptyArrive.visibility = View.VISIBLE
+            binding.emptyArrive.startAnimation(myAnimation)
+            requests.getArrivals(stop, arrivalsAdapter, binding)
+        }
     }
 
     override fun onStart() {
         super.onStart()
-        val myAnimation: Animation = android.view.animation.AnimationUtils.loadAnimation(applicationContext, R.anim.breath_animation)
+        myAnimation = android.view.animation.AnimationUtils.loadAnimation(applicationContext, R.anim.breath_animation)
         binding.emptyArrive.startAnimation(myAnimation)
     }
 
