@@ -10,6 +10,8 @@ import com.example.llegadasemt.data.Arrivals
 import com.example.llegadasemt.data.Login
 import com.example.llegadasemt.data.Logout
 import com.example.llegadasemt.data.MyArrival
+import com.example.llegadasemt.databinding.ActivityArrivalsBinding
+import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.launch
 
 class RequestView: ViewModel {
@@ -17,7 +19,6 @@ class RequestView: ViewModel {
     private val resultLogin: LiveData<Login> = _resultLogin
 
     private val _resultLogout = MutableLiveData<Logout>()
-    private val resultLogout: LiveData<Logout> = _resultLogout
 
     private val _resultArrivals = MutableLiveData<Arrivals>()
     private val resultArrivals: LiveData<Arrivals> = _resultArrivals
@@ -54,35 +55,51 @@ class RequestView: ViewModel {
         }
     }
 
-    fun getArrivals(stop: String, adapter: ArrivalsAdapter, emptyArrive: View) {
+    fun getArrivals(stop: String, adapter: ArrivalsAdapter, binding: ActivityArrivalsBinding) {
         viewModelScope.launch {
             try {
                 _resultArrivals.value = getRequest().getArrivalTimes(accessToken, stop, ArriveBody("EN", "Y", "Y", "Y", ""))
-                var arrivals = ArrayList<MyArrival>()
-                var times = ArrayList<String>()
-                var timesInt = ArrayList<Int>()
-                lateinit var destination: String
-                var lineNumb: String = ""
-                for(line in resultArrivals.value!!.data.get(0).stopData.get(0).lines) {
-                    for (arrival in resultArrivals.value!!.data.get(0).arrivals) {
-                        if (line.label == arrival.line) {
-                            lineNumb = arrival.line
-                            timesInt.add(arrival.estimatedTime)
-                            times.add(if(arrival.estimatedTime/60 < 60) (arrival.estimatedTime/60).toString() + " min" else "+1 h")
-                            destination = arrival.destination
+                try {
+                    val arrivals = ArrayList<MyArrival>()
+                    var times = ArrayList<String>()
+                    var timesInt = ArrayList<Int>()
+                    lateinit var destination: String
+                    var lineNumb: String = ""
+                    for(line in resultArrivals.value!!.data.get(0).stopData.get(0).lines) {
+                        for (arrival in resultArrivals.value!!.data.get(0).arrivals) {
+                            if (line.label == arrival.line) {
+                                lineNumb = arrival.line
+                                timesInt.add(arrival.estimatedTime)
+                                times.add(if(arrival.estimatedTime/60 < 60) (arrival.estimatedTime/60).toString() + " min" else "+1 h")
+                                destination = arrival.destination
+                            }
                         }
+                        if (line.label == lineNumb) {
+                            arrivals.add(MyArrival(line.label, timesInt[0], times[0], if(times.size == 2) times[1] else "-", destination, "#" + line.background, if(line.foreground != null) "#" + line.foreground else "#FFFFFF"))
+                        }
+                        times = ArrayList<String>()
+                        timesInt = ArrayList<Int>()
                     }
-                    if (line.label == lineNumb) {
-                        arrivals.add(MyArrival(line.label, timesInt[0], times[0], if(times.size == 2) times[1] else "-", destination, "#" + line.background, if(line.foreground != null) "#" + line.foreground else "#FFFFFF"))
+                    adapter.arrivals = arrivals.sortedBy { it.timeInt }
+                    binding.emptyArrive.clearAnimation()
+                    binding.emptyArrive.visibility = View.GONE
+                    if(arrivals.isEmpty()) {
+                        binding.noArrivals.visibility = View.VISIBLE
                     }
-                    times = ArrayList<String>()
-                    timesInt = ArrayList<Int>()
                 }
-                adapter.arrivals = arrivals.sortedBy { it.timeInt }
-                emptyArrive.visibility = View.GONE
+                catch (e: Exception) {
+                    println(e.message)
+                    e.printStackTrace()
+                }
+            }
+            catch (e: JsonSyntaxException) {
+                binding.emptyArrive.clearAnimation()
+                binding.emptyArrive.visibility = View.GONE
+                binding.wrongStop.visibility = View.VISIBLE
             }
             catch (e: Exception) {
                 println(e.message)
+                e.printStackTrace()
             }
         }
     }
