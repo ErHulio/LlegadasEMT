@@ -1,11 +1,14 @@
 package com.example.llegadasemt.main
 
 import android.os.Bundle
+import android.view.animation.Animation
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.llegadasemt.R
 import com.example.llegadasemt.adapter.ArrivalsAdapter
 import com.example.llegadasemt.databinding.ActivityArrivalsBinding
 import com.example.llegadasemt.network.RequestView
+
 
 class ArrivalsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityArrivalsBinding
@@ -17,15 +20,20 @@ class ArrivalsActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.arrivalsToolbar)
 
-        var stop: String = intent.extras?.get("stop") as String
+        val stop: String = intent.extras?.get("stop") as String
         binding.arrivalsToolbar.setTitle(binding.arrivalsToolbar.title.toString() + " " + stop)
         val requests: RequestView = RequestView(intent.extras?.get("token") as String)
 
         val arrivalsList: RecyclerView = binding.arrivalsList
         val arrivalsAdapter: ArrivalsAdapter = ArrivalsAdapter()
         arrivalsList.adapter = arrivalsAdapter
-        requests.getArrivals(stop, arrivalsAdapter, binding.emptyArrive)
-        //binding.emptyArrive.visibility = View.GONE
+        requests.getArrivals(stop, arrivalsAdapter, binding)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val myAnimation: Animation = android.view.animation.AnimationUtils.loadAnimation(applicationContext, R.anim.breath_animation)
+        binding.emptyArrive.startAnimation(myAnimation)
     }
 
     override fun onBackPressed() {
