@@ -12,4 +12,5 @@
     <string name="wrong_stop_text">Wrong stop number</string>
     <string name="no_arrivals_image_description">clock_shape_icon</string>
     <string name="no_arrivals_text">No arrivals information available</string>
+    <string name="refresh_description">refresh_button</string>
 </resources>
