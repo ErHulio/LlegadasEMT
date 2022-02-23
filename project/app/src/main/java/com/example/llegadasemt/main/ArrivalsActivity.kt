@@ -33,6 +33,7 @@ class ArrivalsActivity : AppCompatActivity() {
 
         binding.floatingRefresh.setOnClickListener {
             binding.floatingRefresh.visibility = View.GONE
+            binding.timeout.visibility = View.GONE
             binding.arrivalsList.visibility = View.INVISIBLE
             binding.emptyArrive.visibility = View.VISIBLE
             binding.emptyArrive.startAnimation(myAnimation)

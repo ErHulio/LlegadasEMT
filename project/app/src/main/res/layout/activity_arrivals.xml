@@ -129,6 +129,41 @@
                 android:textSize="30sp"
                 android:gravity="center"/>
     </LinearLayout>
+    <LinearLayout
+            android:id="@+id/timeout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:elevation="10dp"
+            android:padding="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/arrivals_toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:targetApi="lollipop"
+            tools:ignore="UseCompoundDrawables">
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@android:drawable/stat_notify_error"
+                android:tint="#4D000000"
+                android:contentDescription="@string/timeout_description"/>
+        <TextView
+                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:text="@string/timeout"
+                android:textColor="#80000000"
+                android:textSize="30sp"
+                android:gravity="center"/>
+        <TextView
+                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:text="@string/timeout_2"
+                android:textColor="#80000000"
+                android:textSize="30sp"
+                android:gravity="center"/>
+    </LinearLayout>
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/floating_refresh"
             android:visibility="gone"
