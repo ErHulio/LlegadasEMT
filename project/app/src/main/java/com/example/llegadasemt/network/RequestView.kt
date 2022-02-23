@@ -13,6 +13,7 @@ import com.example.llegadasemt.data.MyArrival
 import com.example.llegadasemt.databinding.ActivityArrivalsBinding
 import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.launch
+import java.net.SocketTimeoutException
 
 class RequestView: ViewModel {
     private val _resultLogin = MutableLiveData<Login>()
@@ -100,6 +101,12 @@ class RequestView: ViewModel {
                 binding.emptyArrive.clearAnimation()
                 binding.emptyArrive.visibility = View.GONE
                 binding.wrongStop.visibility = View.VISIBLE
+            }
+            catch (e: SocketTimeoutException) {
+                binding.emptyArrive.clearAnimation()
+                binding.emptyArrive.visibility = View.GONE
+                binding.timeout.visibility = View.VISIBLE
+                binding.floatingRefresh.visibility = View.VISIBLE
             }
             catch (e: Exception) {
                 println(e.message)

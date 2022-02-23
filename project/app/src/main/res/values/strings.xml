@@ -13,4 +13,7 @@
     <string name="no_arrivals_image_description">clock_shape_icon</string>
     <string name="no_arrivals_text">No arrivals information available</string>
     <string name="refresh_description">refresh_button</string>
+    <string name="timeout_description">timeout_icon</string>
+    <string name="timeout">Arrival data cannot be retrieved</string>
+    <string name="timeout_2">Please, retry it</string>
 </resources>

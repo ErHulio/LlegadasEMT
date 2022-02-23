@@ -100,8 +100,12 @@ class HomeActivity : AppCompatActivity() {
             binding.floatingSearch.text = getString(R.string.search_stop)
         }
         else {
-            requests.logout()
             super.onBackPressed()
         }
+    }
+
+    override fun onDestroy() {
+        requests.logout()
+        super.onDestroy()
     }
 }
