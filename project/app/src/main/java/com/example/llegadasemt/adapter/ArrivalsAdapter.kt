@@ -19,7 +19,11 @@ class ArrivalsAdapter: RecyclerView.Adapter<ArrivalsAdapter.ArrivalsViewHolder>(
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArrivalsViewHolder {
-        return ArrivalsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.bus_arrival, parent, false))
+        val myHolder: View = LayoutInflater.from(parent.context).inflate(R.layout.bus_arrival, parent, false)
+        val params = myHolder.layoutParams
+        params.height = (parent.height * 0.1155).toInt()
+        myHolder.layoutParams = params
+        return ArrivalsViewHolder(myHolder)
     }
 
     override fun onBindViewHolder(holder: ArrivalsViewHolder, position: Int) {
