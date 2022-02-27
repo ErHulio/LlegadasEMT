@@ -7,7 +7,6 @@
     <string name="search_close">Close search</string>
     <string name="search_hint">Type your stop number</string>
     <string name="search_incorrect">Please, fill the search box properly</string>
-    <string name="arrivals_text">Arrival times retrieved successfully</string>
     <string name="wrong_stop_image_description">x_shape_icon</string>
     <string name="wrong_stop_text">Wrong stop number</string>
     <string name="no_arrivals_image_description">clock_shape_icon</string>
