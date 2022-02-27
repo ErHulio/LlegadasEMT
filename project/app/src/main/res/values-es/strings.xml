@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LlegadasEMT</string>
+    <string name="Hometoolbar_title">Inicio</string>
+    <string name="Arrivalstoolbar_title">Llegadas - Parada</string>
+    <string name="search_description">botón_de_búsqueda</string>
+    <string name="search_stop">Buscar parada de autobus</string>
+    <string name="search_close">Cerrar búsqueda</string>
+    <string name="search_hint">Introduce el número de parada</string>
+    <string name="search_incorrect">Porfavor, rellena el campo correctamente</string>
+    <string name="wrong_stop_image_description">icono_en_forma_de_x</string>
+    <string name="wrong_stop_text">Número de parada incorrecto</string>
+    <string name="no_arrivals_image_description">icono_con_forma_de_reloj</string>
+    <string name="no_arrivals_text">Información de llegadas no disponible</string>
+    <string name="refresh_description">botón_de_refresco</string>
+    <string name="timeout_description">icono_de_tiempo_acabado</string>
+    <string name="timeout">No se pueden obtener datos de llegada</string>
+    <string name="timeout_2">Porfavor, reinténtalo</string>
+</resources>
