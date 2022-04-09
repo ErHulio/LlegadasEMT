@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.llegadasemt.R
 import com.example.llegadasemt.databinding.ActivityHomeBinding
 import com.example.llegadasemt.network.RequestView
-import com.example.llegadasemt.network.Token
+import com.example.llegadasemt.network.credentials.Token
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding

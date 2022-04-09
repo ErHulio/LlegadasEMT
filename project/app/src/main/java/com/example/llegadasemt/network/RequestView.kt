@@ -11,6 +11,7 @@ import com.example.llegadasemt.data.Login
 import com.example.llegadasemt.data.Logout
 import com.example.llegadasemt.data.MyArrival
 import com.example.llegadasemt.databinding.ActivityArrivalsBinding
+import com.example.llegadasemt.network.credentials.Token
 import com.google.gson.JsonSyntaxException
 import kotlinx.coroutines.launch
 import java.net.SocketTimeoutException
